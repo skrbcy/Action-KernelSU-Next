@@ -97,7 +97,6 @@ jobs:
 
            # Apply patches
            cd ./KernelSU-Next
-           patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
            cp ../../kernel_patches/KernelSU-Next-Implement-SUSFS-v1.5.5-Universal.patch ./
            patch -p1 --forward < KernelSU-Next-Implement-SUSFS-v1.5.5-Universal.patch || true
            cd ../common
@@ -109,15 +108,6 @@ jobs:
            cd ./msm-kernel && git add -A && git commit -a -m "BUILD Kernel"
            cd ..
              
-           cp ../kernel_patches/apk_sign.c_fix.patch ./
-           patch -p1 -F 3 < apk_sign.c_fix.patch
-             
-           cp ../kernel_patches/core_hook.c_fix.patch ./
-           patch -p1 --fuzz=3 < ./core_hook.c_fix.patch
-           
-           cp ../kernel_patches/selinux.c_fix.patch ./
-           patch -p1 -F 3 < selinux.c_fix.patch
-           
       - name: Build kernel
         run: |
          cd kernel_workspace
