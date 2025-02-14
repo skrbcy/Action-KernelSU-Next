@@ -1,2 +1,2 @@
-# 食用说明
-一加内核开源地址：[OnePlusOSS](https://github.com/OnePlusOSS/kernel_manifest)
+# 说明
+MKerneISU-SUSFS与RKSU-SUSFS均来自 https://github.com/XiaoNan7777/Action-KernelSU-Next
