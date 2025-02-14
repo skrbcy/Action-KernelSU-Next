@@ -1,4 +1,4 @@
-name: Build MKSU-SUSFS For OnePlus Kernel 6.1 Devices
+name: Build MKSU-SUSFS For OnePlus Kernel 5.15 Devices
 on:
   workflow_dispatch:
    inputs:
