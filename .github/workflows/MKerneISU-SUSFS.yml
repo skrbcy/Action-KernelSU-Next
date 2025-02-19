@@ -76,18 +76,18 @@ jobs:
         run: |
            cd kernel_workspace
            git clone https://gitlab.com/simonpunk/susfs4ksu.git -b gki-android13-5.15
-           git clone https://github.com/TanakaLun/kernel_patches4mksu.git
+           git clone https://github.com/WildPlusKernel/kernel_patches.git
            cd kernel_platform
-           cp ../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./KernelSU/
-           cp ../kernel_patches4mksu/mksu_susfs.patch ./KernelSU/
            cp ../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android13-5.15.patch ./common/
            cp ../susfs4ksu/kernel_patches/fs/* ./common/fs/
            cp ../susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
+           cp ../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./KernelSU/
 
            # Apply patches
            cd ./KernelSU
            patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
-           patch -p1 --forward < mksu_susfs.patch || true
+           cp ../../kernel_patches/mksu_susfs.patch ../KernelSU/
+           patch -p1 < mksu_susfs.patch
            cd ../common
            patch -p1 < 50_add_susfs_in_gki-android13-5.15.patch || true
            cp ../../kernel_patches4mksu/69_hide_stuff.patch ./
