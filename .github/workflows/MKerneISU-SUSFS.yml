@@ -96,6 +96,17 @@ jobs:
            cd ..
            cd ./msm-kernel && git add -A && git commit -a -m "BUILD Kernel"
            cd ..
+
+           cd kernel_workspace
+           git clone https://github.com/Yunbierdika/fix_susfspatch_for_mksu.git
+           cd fix_susfspatch_for_mksu  #进入本仓库目录
+           #进入MKSU目录
+           cd KernelSU、
+           #应用补丁
+           git apply core_hook.patch
+           git apply ksud.patch
+           cd KernelSU
+           git revert -m 1 $(git log --grep="remove devpts hook" --pretty=format:"%h") -n
           
       - name: Build kernel
         run: |
