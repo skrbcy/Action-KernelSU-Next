@@ -96,7 +96,9 @@ jobs:
            cd ..
            cd ./msm-kernel && git add -A && git commit -a -m "BUILD Kernel"
            cd ..
-
+           
+      - name: patch MKSU
+        run: |
            cd kernel_workspace
            git clone https://github.com/Yunbierdika/fix_susfspatch_for_mksu.git
            cd fix_susfspatch_for_mksu  #进入本仓库目录
