@@ -101,7 +101,7 @@ jobs:
            git clone https://github.com/Yunbierdika/fix_susfspatch_for_mksu.git
            cd fix_susfspatch_for_mksu  #进入本仓库目录
            #进入MKSU目录
-           cd KernelSU、
+           cd KernelSU
            #应用补丁
            git apply core_hook.patch
            git apply ksud.patch
