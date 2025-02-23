@@ -22,6 +22,10 @@ on:
         description: "内核版本"
         required: true
         default: '5.15'
+      KERNEL_NAME:
+        description: "修改内核名称"
+        required: true
+        default: '-android13-8-o-skrbcy'
       KSUNEXT_ENABLED:
         description: "添加 KSU Next"
         required: true
@@ -104,6 +108,12 @@ jobs:
            cd ..
            cd ./msm-kernel && git add -A && git commit -a -m "BUILD Kernel"
            cd ..
+
+      - name: Add make name
+        run: |
+         cd kernel_workspace/kernel_platform
+         sed -i '$s|echo "\$res"|echo "\${{ github.event.inputs.KERNEL_NAME }}"|' ./common/scripts/setlocalversion
+         sed -i "/stable_scmversion_cmd/s/-maybe-dirty//g" ./build/kernel/kleaf/impl/stamp.bzl
              
       - name: Build kernel
         run: |
