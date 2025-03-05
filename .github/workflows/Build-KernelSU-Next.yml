@@ -123,7 +123,7 @@ jobs:
            extern bool ksu_execveat_hook;\
            extern bool ksu_input_hook;' kernel/ksud.h || true
 
-           cd common
+           cd ../common
            cp ../../kernel_patches/69_hide_stuff.patch ./
            patch -p1 -F 3 < 69_hide_stuff.patch
            git add -A && git commit -a -m "BUILD Kernel"
