@@ -109,6 +109,13 @@ jobs:
            cp ../../kernel_patches/next/next_hooks.patch ./
            patch -p1 -F 3 < next_hooks.patch
 
+           cp ../../kernel_patches/69_hide_stuff.patch ./
+           patch -p1 -F 3 < 69_hide_stuff.patch
+           git add -A && git commit -a -m "BUILD Kernel"
+           cd ..
+           cd ./msm-kernel && git add -A && git commit -a -m "BUILD Kernel"
+           cd ..
+
            # Apply VFS fix changes directly
            cd ../  # Move back to kernel_platform directory
            sed -i '/#include "selinux\/selinux.h"/a \
@@ -122,14 +129,6 @@ jobs:
            extern bool ksu_vfs_read_hook;\
            extern bool ksu_execveat_hook;\
            extern bool ksu_input_hook;' kernel/ksud.h || true
-
-           cd ../common
-           cp ../../kernel_patches/69_hide_stuff.patch ./
-           patch -p1 -F 3 < 69_hide_stuff.patch
-           git add -A && git commit -a -m "BUILD Kernel"
-           cd ..
-           cd ./msm-kernel && git add -A && git commit -a -m "BUILD Kernel"
-           cd ..
          
       - name: Add make name
         run: |
