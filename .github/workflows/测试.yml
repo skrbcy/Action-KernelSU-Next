@@ -34,7 +34,7 @@ on:
       KSU_NEXT_VERSION:
         description: "KernelSU-Next 版本"
         required: true
-        default: 'v1.0.6'
+        default: 'v1.0.5'
 jobs:
   build:
     runs-on: ubuntu-latest
