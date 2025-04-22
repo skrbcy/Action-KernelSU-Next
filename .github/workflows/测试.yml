@@ -1,4 +1,4 @@
-name: New KernelSU Next SUSFS Ace5Pro
+name: New KernelSU Next SUSFS gt7Pro
 on:
   workflow_dispatch:
     inputs:
